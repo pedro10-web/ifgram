@@ -1,4 +1,7 @@
-import org.apache.catalina.User;
+package br.edu.ifpb.ifgram.Repository;
+
+
+import br.edu.ifpb.ifgram.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

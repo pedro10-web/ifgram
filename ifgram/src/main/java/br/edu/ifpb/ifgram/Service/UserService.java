@@ -1,8 +1,10 @@
 package br.edu.ifpb.ifgram.Service;
 
+import br.edu.ifpb.ifgram.Repository.UserRepository;
 import br.edu.ifpb.ifgram.dto.UserRequest;
 import br.edu.ifpb.ifgram.dto.UserResponse;
-import org.apache.catalina.User;
+
+import br.edu.ifpb.ifgram.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,15 +13,15 @@ public class UserService {
 
     private final UserRepository repository;
 
-    public userService(UserRepoaitory repository) {
-        this.Repository = repository;
+    public UserService(UserRepository repository) {
+        this.repository = repository;
     }
     @Transactional
-    public UserResponse criar(UserRequest request){
-        if (repository>existsByEmail(request.email())){
-            throw new EmailDuplicadoException(request.emal());
+    public UserResponse criar(UserRequest request) throws Exception {
+        if (repository.existsByEmail(request.email())){
+            throw new Exception(request.email());
         }
-        User salvo = repository.save(new User(request.email()));
-        return Userresponse.from(salvo);
+        User salvo = repository.save(new User(request.nome(), request.email()));
+        return UserResponse.from(salvo);
     }
 }

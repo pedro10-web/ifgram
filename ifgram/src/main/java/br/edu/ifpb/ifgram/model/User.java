@@ -1,10 +1,10 @@
-package br.edu.ifpb.ifgram.Repository;
+package br.edu.ifpb.ifgram.model;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
-public class UserRepository {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,4 +15,22 @@ public class UserRepository {
 
     @Column(nullable = false, unique = true)
     private String email;
+
+    public User(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
+
+    public long getId() {
+
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
