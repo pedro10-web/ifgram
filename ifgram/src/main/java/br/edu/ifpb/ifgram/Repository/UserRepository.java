@@ -14,8 +14,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByEmail(String email);
 
-    List<User> findByNomeContainingIgnorecase(String trecho);
-
     @Query("select u from User u where u.email like concat('%', :dominio)")
     List<User> doDominio(String dominio);
 }
