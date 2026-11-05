@@ -1,11 +1,13 @@
 package br.edu.ifpb.ifgram.model;
 
+import jakarta.persistence.*;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.time.LocalDateTime;
 
-public class Post {
+
+@Entity
+    @Table(name = "tb_post")
+    public class Post {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,4 +58,4 @@ public class Post {
         }
     }
 
-}
+
